@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vista Principal</title>
+    <style>
+        table {
+            width: 90%; /* Cambié el ancho para que se ajuste mejor */
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>Tareas en Progreso</h1>
+    </div>
+    
+    <div style="display: flex; justify-content: flex-start;">
+        <a href="{% url 'NuevaTarea' %}">
+            <button>Nueva Tarea</button>
+        </a>
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                    <th>Responsable</th>
+                    <th>Fecha de Finalización</th>
+                    <th>Finalizar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tarea in tareas %}
+                <tr>
+                    <td>{{ tarea.nombre }}</td>
+                    <td>{{ tarea.estado }}</td>
+                    <td>{{ tarea.responsable }}</td>
+                    <td>{{ tarea.fecha_fin }}</td>
+                    <td><button onclick="finalizarTarea('{{ tarea.id }}')">Finalizar</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function finalizarTarea(tareaId) {
+            // Aquí puedes implementar una lógica para cambiar el estado de la tarea a "Finalizado"
+            // y mostrar una ventana emergente con los detalles de la tarea
+            // Para este ejemplo, solo imprimiremos el ID de la tarea en la consola
+            console.log("Finalizar tarea con ID:", tareaId);
+            // Aquí puedes agregar más lógica para actualizar el estado y mostrar los detalles
+            // utilizando AJAX o una solicitud a tu backend
+        }
+    </script>
+</body>
+</html>

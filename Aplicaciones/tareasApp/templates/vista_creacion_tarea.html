@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Nueva Tarea</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>Crear Nueva Tarea</h1>
+    </div>
+    <div style="display: flex; justify-content: flex-start;">
+        <a href="{% url 'vista_principal' %}">
+            <button>Volver</button>
+        </a>
+    </div>
+    <br>
+    <div style="display: flex; justify-content: center;">
+        <form method="post">
+            {% csrf_token %}
+            <label for="nombre">Nombre:</label><br>
+            <input type="text" id="nombre" name="nombre"><br>
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" name="descripcion"></textarea><br>
+            <label for="fecha_fin">Fecha de Finalización:</label><br>
+            <input type="date" id="fecha_fin" name="fecha_fin"><br>
+            <label for="responsable">Responsable:</label><br>
+            <input type="text" id="responsable" name="responsable"><br><br>
+            <input type="submit" value="Crear Tarea">
+        </form>
+    </div>
+</body>
+</html>
